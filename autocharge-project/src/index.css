@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary (Electric Blue) */
+    --primary: 199 89% 48%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 199 89% 60%;
+
+    /* Secondary (Energy Green) */
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted */
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent (Electric Green) */
+    --accent: 158 64% 52%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 199 89% 48%;
+    --radius: 0.75rem;
+
+    /* Custom Gradients & Shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%), hsl(199 89% 60%));
+    --gradient-electric: linear-gradient(135deg, hsl(199 89% 48%), hsl(158 64% 52%));
+    --gradient-hero: linear-gradient(180deg, hsl(222 47% 5%), hsl(222 47% 8%));
+    --shadow-glow: 0 0 40px hsl(199 89% 48% / 0.4);
+    --shadow-glow-green: 0 0 40px hsl(142 76% 36% / 0.4);
+    --shadow-elegant: 0 10px 30px -10px hsl(199 89% 48% / 0.3);
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  /* Apply futuristic font to headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+  /* Apply body font */
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-electric);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.4); }
+  50% { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.8); }
+}
+@keyframes energy-flow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+.animate-energy-flow {
+  animation: energy-flow 2s linear infinite;
+}
